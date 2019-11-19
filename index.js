@@ -6,8 +6,8 @@ let username = $('input').val().toLowerCase()
 // Defines the user-input username.
 
 function displayRepos(responseJson) {
-    // This function runs after getRepos(username).  If errors are returned, an error message is displayed.
-    // If no errors are returned, the repos are displayed.   
+    // This function runs after getRepos(username).  If the user-input handle is not found, a
+    // message is displayed saying no repos are available for that handle.
     console.log('response', responseJson)
     $('.js-results').empty()
     if (responseJson.length === 0) {
@@ -16,7 +16,7 @@ function displayRepos(responseJson) {
     }
 
     else {
-    // If there are no errors, the usernames's repos are added to the results.
+        // If there are repos associated with the handle, they are displayed.
         console.log(`Username was found! responseJson.length is ${responseJson.length}`)
         $('.js-results').prepend(`<h2>Here are ${username}'s ${responseJson.length} repos:</h2>`)
         for (let i = 0; i < responseJson.length; i++) {
