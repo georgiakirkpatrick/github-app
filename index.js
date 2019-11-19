@@ -21,8 +21,8 @@ function displayRepos(responseJson) {
         $('.js-results').prepend(`<h2>Here are ${username}'s ${responseJson.length} repos:</h2>`)
         for (let i = 0; i < responseJson.length; i++) {
             console.log(`result ${i} was displayed`)
-            $('.js-results-list').append(`<li><h3>${i + 1}. ${responseJson[i].name}</h3></li>
-            <li><p><a href = "${responseJson[i].html_url}">${responseJson[i].html_url}</p></li>`)
+            $('.js-results').append(`<h3>${i + 1}. ${responseJson[i].name}</h3>
+            <p><a href = "${responseJson[i].html_url}">${responseJson[i].html_url}</p>`)
         }
     }
 }
