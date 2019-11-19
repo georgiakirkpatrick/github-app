@@ -9,8 +9,10 @@ function displayRepos(responseJson) {
     // This function runs after getRepos(username).  If errors are returned, an error message is displayed.
     // If no errors are returned, the repos are displayed.   
     console.log('response', responseJson)
-    if (responseJson.status === "error") {
-        console.log('displayRepos(responseJson) if statement ran')
+    $('.js-results').empty()
+    if (responseJson.length === 0) {
+        console.log('no repos found for that user')
+        $('.js-results').prepend(`<h2>No repos found for ${username}</h2>`)
     }
 
     else {
@@ -49,7 +51,6 @@ function submitForm() {
         }
 
         else {
-            $('.js-results').empty()
             username = $('input').val().toLowerCase()
             getRepos(username)
         }
